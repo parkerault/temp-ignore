@@ -1,0 +1,6 @@
+{
+  "presets": [
+    "razzle/babel" // NEEDED
+  ],
+  "plugins": [["babel-plugin-inline-react-svg"]]
+}

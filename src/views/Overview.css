@@ -1,0 +1,19 @@
+.overview_title {
+  margin-bottom: 40px;
+}
+
+.overview_list {
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  height: 70px;
+  font-size: 14px;
+  line-height: 1.6em;
+}
+
+.overview_listTerm {
+  font-weight: 600;
+}
+
+.overview_listDescription {
+  margin-bottom: 20px;
+}

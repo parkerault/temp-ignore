@@ -1,0 +1,68 @@
+import { createAction, createReducer } from "@reduxjs/toolkit";
+import {
+  call,
+  SagaGenerator,
+  take,
+} from "typed-redux-saga";
+import {
+  RootState,
+  withPayload,
+  Collection,
+} from "config/types";
+
+/******************************************************************************
+ * Actions
+ *****************************************************************************/
+
+export const __Actions = {
+  action: createAction("__/action", withPayload<string>()),
+};
+
+/******************************************************************************
+ * State & Reducer
+ *****************************************************************************/
+
+export interface I__ {
+}
+
+export interface I__State {
+  collection: Collection<I__>;
+}
+
+export const __DefaultState: I__State = {
+  collection: {},
+};
+
+export const __Reducer = createReducer(__DefaultState, (builder) => {
+  builder.addCase(__Actions.action, (state, action) => {
+    return state;
+  });
+});
+
+/******************************************************************************
+ * Sagas
+ *****************************************************************************/
+
+export function* watch(): SagaGenerator<void> {
+  while (true) {
+    const action = yield* take(__Actions.action);
+    yield* call({ context: null, fn: saga}, action.payload);
+  }
+}
+
+function* saga(name: string): SagaGenerator<void> {
+}
+
+export const __Sagas = {
+  saga,
+};
+
+/******************************************************************************
+ * Selectors
+ *****************************************************************************/
+
+const collection = (state: RootState) => state
+
+export const __Selectors = {
+  collection
+};

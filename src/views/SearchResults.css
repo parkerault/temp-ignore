@@ -1,0 +1,45 @@
+.listRoot {
+  background-color: var(--clr-list-bg);
+}
+
+.list_rowContent {
+  display: grid;
+  grid-template-columns: 80px 1fr 120px 150px 40px;
+  height: 70px;
+}
+
+.loading .list_rowContent {
+  opacity: 0.5;
+}
+
+.list_row-odd {
+  background-color: var(--clr-list-odd);
+}
+.list_row-even {
+  background-color: var(--clr-list-even);
+}
+
+.list_fieldLabel {
+  font-size: 10pt;
+  font-weight: 600;
+  padding-top: 14px;
+}
+
+.list_fieldData {
+  font-size: 12pt;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-top: 10px;
+}
+
+.list_linkArrow {
+  width: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.linkArrow {
+  fill: var(--clr-fg);
+}

@@ -1,0 +1,23 @@
+.searchRoot .page {
+  position: relative;
+  left: -12px; /* account for list scrollbar */
+  padding: 20px 0;
+}
+
+.searchInput {
+  border: 0 none;
+  background: var(--clr-1-dark);
+  height: 48px;
+  width: 100%;
+  margin: 0;
+  padding: 0 20px;
+  font-family: "Source Code Pro", monospace;
+  font-weight: bold;
+  font-size: 18pt;
+  border-radius: 8px;
+  color: var(--clr-fg)
+}
+
+.searchInput::placeholder {
+  color: var(--clr-bg-light);
+}

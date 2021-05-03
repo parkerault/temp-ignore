@@ -1,0 +1,26 @@
+.titleBar {
+  background-color: var(--clr-1);
+  color: var(--clr-bg);
+  height: 120px;
+}
+
+.titleBar_title {
+  font-family: "Source Code Pro", monospace;
+  font-size: 45pt;
+  font-weight: 700;
+  letter-spacing: 6pt;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 15px;
+}
+
+.titleBar_subtitle {
+  text-align: center;
+  padding-top: 6px;
+}
+
+.titleBar_titleLink {
+  color: var(--clr-bg);
+  text-decoration: none;
+}
