@@ -6,7 +6,7 @@ import {} from "history";
 
 export default function createDefaultState() {
   return {
-    router: (undefined as any) as RouterState,
+    router: (undefined as unknown) as RouterState<never>,
     overviews: OverviewDefaultState,
     symbols: SymbolDefaultState,
     views: {

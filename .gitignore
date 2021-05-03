@@ -1,4 +1,12 @@
-node_modules
-.env.local
-build
 .vscode
+logs
+*.log
+npm-debug.log*
+.DS_Store
+
+coverage
+node_modules
+build
+cache
+public/static
+.env*.local

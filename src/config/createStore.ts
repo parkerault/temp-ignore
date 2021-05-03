@@ -15,7 +15,7 @@ import { History } from "history";
 import createRootSaga from "./createRootSaga";
 import { debounce } from "throttle-debounce";
 
-export default function configureStore(history: History): RootStore {
+export default function configureStore(history: History<never>): RootStore {
   const sagaMiddleware = createSagaMiddleware();
 
   const middlewares = [

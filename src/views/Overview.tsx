@@ -59,8 +59,8 @@ const OverviewList: React.FC<OverviewListProps> = (props) => {
   const keys = Object.keys(props.overviewData ?? {}) as OverviewDataKeys[];
   return (
     <dl className="overview_list">
-      {keys.map((key) => (
-        <OverviewListItem valueKey={key} value={props.overviewData![key]} />
+      {keys.map((valueKey) => (
+        <OverviewListItem key={valueKey} valueKey={valueKey} value={props.overviewData![valueKey]} />
       ))}
     </dl>
   );

@@ -7,10 +7,10 @@ import { SymbolReducer } from "entities/Symbol";
 import { OverviewReducer } from "entities/Overview";
 
 export default function createRootReducer(
-  history: History
+  history: History<never>
 ): Reducer<RootState, RootAction> {
   return combineReducers({
-    router: connectRouter(history),
+    router: connectRouter<never>(history),
     symbols: SymbolReducer,
     overviews: OverviewReducer,
     views: combineReducers({

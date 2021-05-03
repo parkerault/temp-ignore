@@ -98,8 +98,14 @@ export const SymbolSagas = {
 
 const collection = (state: RootState) => state.symbols.collection;
 const requestState = (state: RootState) => state.symbols.requestState;
+const byId = (state: RootState, props: { symbol?: string }) => {
+  return props.symbol !== undefined
+    ? collection(state)[props.symbol]
+    : undefined;
+};
 
 export const SymbolSelectors = {
   collection,
   requestState,
+  byId,
 };

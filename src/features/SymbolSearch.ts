@@ -10,6 +10,7 @@ import { SymbolActions } from "entities/Symbol";
 
 export const SymbolSearchActions = {
   setValue: createAction("SymbolSearch/setValue", withPayload<string>()),
+  setValid: createAction("SymbolSearch/setValid", withPayload<boolean>()),
   setVisibility: createAction(
     "SymbolSearch/setVisibility",
     withPayload<boolean>()
@@ -24,11 +25,13 @@ export type SymbolSearchActions = ActionMapTypes<typeof SymbolSearchActions>;
 
 export type SymbolSearchState = {
   searchValue: string;
+  valid: boolean;
   visibility: boolean;
 };
 
 export const SymbolSearchDefaultState: SymbolSearchState = {
   searchValue: "",
+  valid: true,
   visibility: false,
 };
 
@@ -38,6 +41,9 @@ export const SymbolSearchReducer = createReducer(
     builder
       .addCase(SymbolSearchActions.setValue, (state, action) => {
         state.searchValue = action.payload;
+      })
+      .addCase(SymbolSearchActions.setValid, (state, action) => {
+        state.valid = action.payload;
       })
       .addCase(SymbolSearchActions.setVisibility, (state, action) => {
         state.visibility = action.payload;
@@ -69,9 +75,11 @@ export const SymbolSearchSagas = {
  *****************************************************************************/
 
 const searchValue = (state: RootState) => state.views.symbolSearch.searchValue;
+const valid = (state: RootState) => state.views.symbolSearch.valid;
 const visibility = (state: RootState) => state.views.symbolSearch.visibility;
 
 export const SymbolSearchSelectors = {
   searchValue,
+  valid,
   visibility,
 };

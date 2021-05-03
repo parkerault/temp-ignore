@@ -5,7 +5,7 @@ import {
   Store,
 } from "@reduxjs/toolkit";
 import createDefaultState from "config/createDefaultState";
-import { LocationChangeAction } from "connected-react-router";
+import { CallHistoryMethodAction, LocationChangeAction } from "connected-react-router";
 import { EntityActions } from "entities";
 import { FeatureActions } from "features";
 import { LocationState } from "history";
@@ -15,7 +15,8 @@ export type RootState = ReturnType<typeof createDefaultState>;
 export type RootAction =
   | EntityActions
   | FeatureActions
-  | LocationChangeAction<LocationState>;
+  | LocationChangeAction<LocationState>
+  | CallHistoryMethodAction
 export type RootDispatch = Dispatch<RootAction>;
 export type RootStore = Store<RootState, RootAction>;
 

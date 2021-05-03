@@ -1,23 +1,52 @@
-.searchRoot .page {
+.searchForm {
   position: relative;
-  left: -12px; /* account for list scrollbar */
   padding: 20px 0;
 }
 
-.searchInput {
+.symbolSearch_invalid {
+  padding-left: 20px;
+}
+
+.searchForm {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.styledInput {
+  appearance: none;
   border: 0 none;
-  background: var(--clr-1-dark);
   height: 48px;
+  font-family: "Source Code Pro", monospace;
+  font-weight: 600;
+  font-size: 18pt;
+  border-radius: 8px;
+  background: var(--clr-1-dark);
+  color: var(--clr-fg);
+  outline: 0 none;
+}
+
+.searchForm_input {
   width: 100%;
   margin: 0;
   padding: 0 20px;
-  font-family: "Source Code Pro", monospace;
-  font-weight: bold;
-  font-size: 18pt;
-  border-radius: 8px;
-  color: var(--clr-fg)
 }
 
-.searchInput::placeholder {
+.searchForm_labelInput {
+  flex-grow: 1;
+  padding-right: 10px;
+}
+
+.searchForm_input::placeholder {
+  color: var(--clr-bg-light);
+}
+
+.searchForm_submit {
+  padding: 0 20px;
+  cursor: pointer;
+}
+
+.searchForm_submit:disabled {
+  opacity: 0.5;
   color: var(--clr-bg-light);
 }

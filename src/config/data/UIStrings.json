@@ -10,6 +10,10 @@
     "failureMessage": "There was a problem with the request. Please try again later.",
     "failureResponseMessage": "There was a problem with the server response. Please try again later."
   },
+  "SymbolSearch": {
+    "searchPlaceholder": "Search for a Stonk",
+    "invalid": "That symbol doesn't exist. Please select another."
+  },
   "Symbol": "Symbol",
   "AssetType": "Asset Type",
   "Name": "Name",
