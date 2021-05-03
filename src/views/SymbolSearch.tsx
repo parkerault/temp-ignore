@@ -40,6 +40,7 @@ export const SymbolSearch: React.FC = () => {
         }}
         onSubmit={(e) => {
           e.preventDefault();
+          console.log("onSubmit", inputValue, symbolValue)
           if (symbolValue === undefined) {
             dispatch(SymbolSearchActions.setValid(false));
           } else {

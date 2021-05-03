@@ -1,9 +1,7 @@
 import { useRootDispatch, useRootSelector } from "config/types";
 import { OverviewActions, OverviewSelectors } from "entities/Overview";
 import React, { useEffect } from "react";
-import { createMatchSelector, RouterRootState } from "connected-react-router";
 import Spinner from "./Spinner";
-import { useSelector } from "react-redux";
 import {
   APIError,
   APIKeyError,
@@ -16,12 +14,7 @@ import { OverviewData, OverviewDataKeys } from "http/OverviewAPI";
 import "./Overview.css";
 
 export const Overview: React.FC = () => {
-  const match = useSelector(
-    createMatchSelector<RouterRootState, { symbol: string }>(
-      "/overview/:symbol"
-    )
-  );
-  const symbol = match?.params.symbol;
+  const symbol = useRootSelector(OverviewSelectors.pathSymbol);
   const dispatch = useRootDispatch();
   const overviewData = useRootSelector((state) =>
     OverviewSelectors.byId(state, { symbol })
@@ -60,7 +53,11 @@ const OverviewList: React.FC<OverviewListProps> = (props) => {
   return (
     <dl className="overview_list">
       {keys.map((valueKey) => (
-        <OverviewListItem key={valueKey} valueKey={valueKey} value={props.overviewData![valueKey]} />
+        <OverviewListItem
+          key={valueKey}
+          valueKey={valueKey}
+          value={props.overviewData![valueKey]}
+        />
       ))}
     </dl>
   );
@@ -78,9 +75,7 @@ const OverviewListItem: React.FC<OverviewListItemProps> = (props) => {
       : props.value;
   return (
     <>
-      <dt className="overview_listTerm">
-        {props.valueKey}
-      </dt>
+      <dt className="overview_listTerm">{props.valueKey}</dt>
       <dd className="overview_listDescription">{value}</dd>
     </>
   );

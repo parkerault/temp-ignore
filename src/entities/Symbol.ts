@@ -99,8 +99,9 @@ export const SymbolSagas = {
 const collection = (state: RootState) => state.symbols.collection;
 const requestState = (state: RootState) => state.symbols.requestState;
 const byId = (state: RootState, props: { symbol?: string }) => {
+  console.log("byId", props.symbol, collection(state))
   return props.symbol !== undefined
-    ? collection(state)[props.symbol]
+    ? collection(state)[props.symbol.toUpperCase()]
     : undefined;
 };
 

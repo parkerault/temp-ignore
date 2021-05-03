@@ -4,6 +4,8 @@ import { isRight } from "fp-ts/lib/Either";
 import { RootState, withPayload, Collection } from "config/types";
 import { RequestState } from "http/ApiClient";
 import { getOverview, OverviewData } from "http/OverviewAPI";
+import { createMatchSelector, RouterRootState } from "connected-react-router";
+import routes from "config/routes";
 
 /******************************************************************************
  * Actions
@@ -73,7 +75,7 @@ function* fetchOverviewData(action: SymbolPayload): SagaGenerator<void> {
     OverviewSelectors.byId(state, { symbol: symbol })
   );
   if (storeData !== undefined) {
-    yield* put(OverviewActions.setRequestState({ status: "success" }))
+    yield* put(OverviewActions.setRequestState({ status: "success" }));
     return;
   }
   yield* put(OverviewActions.setRequestState({ status: "pending" }));
@@ -105,12 +107,18 @@ const collection = (state: RootState) => state.overviews.collection;
 const requestState = (state: RootState) => state.overviews.requestState;
 const byId = (state: RootState, props: { symbol?: string }) => {
   return props.symbol !== undefined
-    ? state.overviews.collection[props.symbol]
+    ? state.overviews.collection[props.symbol.toUpperCase()]
     : undefined;
-}
+};
+const matchSelector = createMatchSelector<RouterRootState, { symbol: string }>(
+  routes.overview
+);
+const pathSymbol = (state: RootState) =>
+  matchSelector(state)?.params.symbol;
 
 export const OverviewSelectors = {
   collection,
   requestState,
   byId,
+  pathSymbol,
 };
